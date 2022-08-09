@@ -20,7 +20,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone-Number</th>
-                                <th>Role</th>
+                                <th>address</th>
                                 <th>Joined</th>
                                 <th>Actions</th>
                             </tr>
@@ -30,9 +30,10 @@
                                 <td>
                                     1
                                 </td>
-                                <td>Hamzat</td>
-                                <td>greenmousetest@gmail.com</td>
-                                <td>08155302760</td>
+                                <td>{{ Auth::user()->name }}</td>
+                                <td>{{ Auth::user()->email }}</td>
+                                <td>{{ Auth::user()->telephone_number }}</td>
+                                <td>{{ Auth::user()->address }}</td>
                                 <td class="text-black">Member</td>
                                 <td class="text-black">Active</td>
                                 <td>
