@@ -42,3 +42,5 @@ Route::get('/log_out', [App\Http\Controllers\HomeController::class, 'log_out'])-
 
 Route::post('/upload-image', [App\Http\Controllers\ImageController::class, 'storeImage'])->name('image.store');
 Route::post('update-profile',[App\Http\Controllers\HomeController::class,'updateProfile'])->name('update-profile');
+Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
+Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');

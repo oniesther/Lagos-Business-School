@@ -167,24 +167,29 @@
                                 <div class="">
                                     <div class="forming">
                                         <div class="sign">
-                                            <form class="sign-div">
+                                            <form class="sign-div" action="{{ route('update-password') }}" method="POST">
+                                                @csrf
+
+                                                @if (session('status'))
+                                                <div class="alert alert-success" role="alert">
+                                                    {{ session('status') }}
+                                                </div>
+                                            @elseif (session('error'))
+                                                <div class="alert alert-danger" role="alert">
+                                                    {{ session('error') }}
+                                                </div>
+                                            @endif
+
                                                 <div class="row">
-                                                    <!--Old Password-->
-                                                    <div class="col-md-12">
-                                                        <label>Old Password</label>
-                                                        <div class="row">
-                                                            <div class="col-md-12 mb-4">
-                                                                <input type="password"placeholder="**********"name="username" class="input" required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--Old Password Ends-->
                                                     <!--New Password-->
                                                     <div class="col-md-12">
                                                         <label>New Password</label>
                                                         <div class="row">
                                                             <div class="col-md-12 mb-4">
-                                                                <input type="password"placeholder="**********"name="username" class="input" required>
+                                                            <input type="password"placeholder="**********"name="new_password" class="input @error('new_password') is-invalid @enderror" required>
+                                                                @error('new_password')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
                                                             </div>
                                                         </div>
                                                         
@@ -195,7 +200,7 @@
                                                         <label>Confirm New Password</label>
                                                         <div class="row">
                                                             <div class="col-md-12 mb-4">
-                                                                <input type="password"placeholder="**********"name="username" class="input" required>
+                                                                <input type="password"placeholder="**********"name="new_password_confirmation" class="input" required>
                                                             </div>
                                                         </div>
                                                     </div>

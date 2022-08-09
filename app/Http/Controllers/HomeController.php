@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -53,6 +54,25 @@ public function updateProfile(Request $request){
 
 
         $user->update();
+        return redirect()->back();
+    }
+       
+    public function changePassword()
+    {
+       return view('change-password');
+    }
+
+
+    public function updatePassword(Request $request)
+   {
+        # Validation
+        $request->validate([
+            'new_password' => 'required|confirmed',
+        ]);
+        $user =  User::find(Auth::user()->id);
+        $user->password =  Hash::make($request->new_password);
+        $user->update();
+
         return redirect()->back();
     }
 }
